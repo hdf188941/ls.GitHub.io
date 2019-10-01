@@ -1,3 +1,11 @@
 mysql优化学习笔记：
 1.sql 执行之前经过了sql优化器的调整
 2.复合索引最好按照顺序查找，where 和order by 一起使用时，也最好不要跨列，如索引（a,b,c,d） 最好不要 a c d 或where a order by c d
+mysql> explain select bid  from book where bid=1;
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------------+
+| id | select_type | table | type  | possible_keys | key     | key_len | ref   | rows | Extra       |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------------+
+|  1 | SIMPLE      | book  | const | PRIMARY       | PRIMARY | 4       | const |    1 | Using index |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------------+
+type 级别：system>const>eq_ref>ref>range>index>ALL
+小表驱动大表
