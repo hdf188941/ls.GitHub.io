@@ -1,0 +1,4 @@
+mysql学习笔记：
+
+SpringBootSecurity学习（09）网页版登录配置Session共享
+场景 当后台项目由部署在一台改为部署在多台以后，解决session共享问题最常用的办法就是把session存储在redis等缓存中。关于session和cookie概念这里就不再赘述了，在springboot security环境下，把session存储到redis中共享是非常非常简单的，
